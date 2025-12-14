@@ -1,9 +1,11 @@
 package com.app.recychool.domain.entity;
 
 import com.app.recychool.domain.dto.UserResponseDTO;
+import com.app.recychool.domain.enums.IdentityProvider;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -29,6 +31,14 @@ public class User {
     private String userPhone;
     private String userPassword;
     private String userProvider;
+    @Column(unique = true)
+    private String userIdentityKey;
+
+    private LocalDateTime userIdentityVerifiedAt;
+
+    @Enumerated(EnumType.STRING)
+    private IdentityProvider userIdentityProvider;
+
 
     @JoinColumn(name = "USER_SOCIAL_ID")
     @OneToOne
