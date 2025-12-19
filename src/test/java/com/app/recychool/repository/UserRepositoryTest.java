@@ -21,14 +21,17 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserRepositoryTest {
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
     @Test
     public void userSaveTest() {
         User user = new User();
-        user.setUserEmail("test123@gmail.com");
-        user.setUserName("test123");
-        user.setUserPassword("test123!@#");
+        user.setUserEmail("test111@gmail.com");
+        user.setUserName("test111");
+        user.setUserPassword("test111!!!");
         user.setUserPassword(passwordEncoder.encode(user.getUserPassword()));
         userRepository.save(user);
+//        log.info(passwordEncoder.encode(user.getUserPassword()));
     }
 }
