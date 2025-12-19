@@ -37,4 +37,5 @@ public interface UserService {
   // 회원 탈퇴
   public void withdraw(Long id);
 
+  public void modifyUserIsLogin(Long userId);
 }

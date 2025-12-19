@@ -27,9 +27,9 @@ class UserRepositoryTest {
     @Test
     public void userSaveTest() {
         User user = new User();
-        user.setUserEmail("test111@gmail.com");
+        user.setUserEmail("test123@gmail.com");
         user.setUserName("test111");
-        user.setUserPassword("test111!!!");
+        user.setUserPassword("test123!@#");
         user.setUserPassword(passwordEncoder.encode(user.getUserPassword()));
         userRepository.save(user);
 //        log.info(passwordEncoder.encode(user.getUserPassword()));

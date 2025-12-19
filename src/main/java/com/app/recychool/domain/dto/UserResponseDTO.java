@@ -22,6 +22,7 @@ public class UserResponseDTO implements Serializable {
     private String userPhone;
     private String userPassword;
     private String userProvider;
+    private Boolean userIsLogin;
 
     public UserResponseDTO(User user) {
         this.id = user.getId();

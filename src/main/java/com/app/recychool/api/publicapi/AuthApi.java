@@ -139,5 +139,20 @@ public class AuthApi {
         ApiResponseDTO response = smsService.sendAuthentificationCodeBySms(phoneNumber, session);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
+    // 이메일로 인증코드 전송
+    @PostMapping("/codes/email")
+    public ResponseEntity<ApiResponseDTO> sendAuthentificationCodeByEmail(String toEmail, HttpSession session) {
+        ApiResponseDTO response = smsService.sendAuthentificationCodeByEmail(toEmail, session);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    // 인증코드 확인
+    @PostMapping("/codes/verify")
+    public ResponseEntity<ApiResponseDTO> verifyAuthentificationCode(String userAuthentificationCode, HttpSession session) {
+        Map<String, Boolean> verified = new HashMap();
+        String authentificationCode = (String)session.getAttribute("authentificationCode");
+        verified.put("verified", authentificationCode.equals(userAuthentificationCode));
+        return ResponseEntity.status(HttpStatus.OK).body(ApiResponseDTO.of("인증코드 확인 완료", verified));
+    }
 }
 

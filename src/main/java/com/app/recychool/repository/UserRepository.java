@@ -1,5 +1,6 @@
 package com.app.recychool.repository;
 
+import com.app.recychool.domain.dto.UserResponseDTO;
 import com.app.recychool.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,7 +19,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     User findIdByUserEmailAndUserPhone(String userEmail, String userPhone);
 
     boolean existsByUserIdentityKey(String userIdentityKey);
-
 
     Optional<User> findByUserEmail(String userEmail);
 }

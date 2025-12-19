@@ -34,7 +34,7 @@ public class User {
     private String userPassword;
     private String userProvider;
 
-    @Column(name = "user_is_login", nullable = true)
+    @Column(name = "USER_IS_LOGIN", nullable = true)
     private Boolean userIsLogin;
 
     private String userIdentityKey;

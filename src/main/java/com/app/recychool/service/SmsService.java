@@ -6,4 +6,6 @@ import jakarta.servlet.http.HttpSession;
 
 public interface SmsService {
     public ApiResponseDTO sendAuthentificationCodeBySms(String phoneNumber, HttpSession session);
+
+    public ApiResponseDTO sendAuthentificationCodeByEmail(String email, HttpSession session);
 }

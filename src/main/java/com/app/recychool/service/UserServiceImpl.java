@@ -134,4 +134,11 @@ public class UserServiceImpl implements UserService {
     userRepository.deleteById(id);
   }
 
+//  로그아웃 시 현재 로그인 상태 변경 서비스
+    @Override
+    public void modifyUserIsLogin(Long userId){
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new UserException("유저를 찾을 수 없습니다."));
+        user.setUserIsLogin(false);
+    }
 }
