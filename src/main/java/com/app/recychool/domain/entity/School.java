@@ -1,7 +1,10 @@
 package com.app.recychool.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "TBL_SCHOOL")
@@ -30,5 +33,8 @@ public class School {
     private String schoolImagePath;
     private String schoolImageName;
 
+    @OneToMany(mappedBy = "school")
+    @JsonIgnore
+    private List<MovieReservation> movieReservations;
 
 }

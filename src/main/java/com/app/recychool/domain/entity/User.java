@@ -2,11 +2,13 @@ package com.app.recychool.domain.entity;
 
 import com.app.recychool.domain.dto.UserResponseDTO;
 import com.app.recychool.domain.enums.IdentityProvider;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "TBL_USER")
@@ -64,4 +66,10 @@ public class User {
         this.userPhone = userResponseDTO.getUserPhone();
         if (this.userProvider == null) this.userProvider = "local";
     }
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<MovieReservation> movieReservations;
+
+
 }
