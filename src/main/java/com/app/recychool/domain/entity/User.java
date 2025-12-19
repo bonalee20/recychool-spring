@@ -2,6 +2,7 @@ package com.app.recychool.domain.entity;
 
 import com.app.recychool.domain.dto.UserResponseDTO;
 import com.app.recychool.domain.enums.IdentityProvider;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -67,6 +68,7 @@ public class User {
     }
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<MovieReservation> movieReservations;
 
 
