@@ -1,4 +1,4 @@
-package com.app.recychool.controller;
+package com.app.recychool.api.privateapi;
 
 import com.app.recychool.domain.dto.ApiResponseDTO; // DTO 위치에 맞게 수정 필요
 import com.app.recychool.domain.entity.MovieReservation;
