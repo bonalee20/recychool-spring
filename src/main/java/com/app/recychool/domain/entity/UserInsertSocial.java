@@ -3,6 +3,8 @@ package com.app.recychool.domain.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -20,7 +22,7 @@ public class UserInsertSocial {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_USER_INSERT_SOCIAL")
     private Long id;
     private String userName;
-    private Date userBirthday;
+    private LocalDate userBirthday;
     private String userEmail;
     private String userPhone;
     private String userThumbnailName;

@@ -22,4 +22,13 @@ public class SmsServiceImpl implements SmsService {
         // 응답
         return ApiResponseDTO.of("메세지 전송 성공");
     }
+
+    @Override
+    public ApiResponseDTO sendAuthentificationCodeByEmail(String toEmail, HttpSession session) {
+        // 세션에 랜덤 코드를 생성해서 저장
+        String AuthentificationCode = smsUtil.saveAuthentificationCode(session);
+        // 이메일 전송
+        smsUtil.sendEmail(toEmail, AuthentificationCode);
+        return ApiResponseDTO.of("메세지 전송 성공");
+    }
 }

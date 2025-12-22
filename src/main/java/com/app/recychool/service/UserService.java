@@ -1,5 +1,6 @@
 package com.app.recychool.service;
 
+import com.app.recychool.domain.dto.UserUpdateDTO;
 import com.app.recychool.domain.entity.User;
 import com.app.recychool.domain.entity.UserInsertSocial;
 import com.app.recychool.domain.entity.UserSocial;
@@ -34,7 +35,13 @@ public interface UserService {
 
   // 회원 정보 수정
   public UserResponseDTO modify(User user);
+
   // 회원 탈퇴
   public void withdraw(Long id);
 
+  public void modifyUserIsLogin(Long userId);
+
+  public boolean findUserByUserNameAndUserPhone(String userName, String userPhone);
+
+  public void updateUserInfo(Long userId, UserUpdateDTO userUpdateDTO);
 }

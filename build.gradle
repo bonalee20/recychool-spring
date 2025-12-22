@@ -26,6 +26,7 @@ repositories {
 dependencies {
     implementation 'net.nurigo:sdk:4.3.0'
     implementation 'net.coobird:thumbnailator:0.4.8'
+    implementation 'org.springframework.boot:spring-boot-starter-mail' // email
     implementation 'io.jsonwebtoken:jjwt-api:0.12.3'
     implementation 'io.jsonwebtoken:jjwt-impl:0.12.3'
     implementation 'io.jsonwebtoken:jjwt-jackson:0.12.3'

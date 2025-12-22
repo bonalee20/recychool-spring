@@ -1,6 +1,7 @@
 package com.app.recychool.filter;
 
 import com.app.recychool.domain.dto.UserResponseDTO;
+import com.app.recychool.service.AuthService;
 import com.app.recychool.service.UserService;
 import com.app.recychool.util.JwtTokenUtil;
 import jakarta.servlet.FilterChain;
@@ -25,6 +26,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtTokenUtil jwtTokenUtil;
     private final UserService userService;
+    private final AuthService authService;
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
@@ -58,6 +60,17 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 try {
                     userEmail = (String)jwtTokenUtil.getUserEmailFromToken(jwtToken).get("userEmail");
                     log.info("🔐 토큰에서 추출한 userEmail: {}", userEmail);
+                    
+                    // 블랙리스트 체크
+                    if(userEmail != null) {
+                        Long userId = userService.getUserIdByUserEmail(userEmail);
+                        if(authService.isBlacklistedAccessToken(jwtToken, userId)) {
+                            log.warn("🔐 블랙리스트에 등록된 토큰입니다: userId={}", userId);
+                            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                            response.getWriter().write("로그아웃된 토큰입니다. 다시 로그인하세요.");
+                            return;
+                        }
+                    }
                 } catch (Exception e) {
                     log.error("🔐 토큰에서 userEmail 추출 실패", e);
                 }

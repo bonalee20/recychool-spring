@@ -204,6 +204,38 @@ public class AuthServiceImpl implements AuthService {
   }
 
   @Override
+  public boolean saveBlacklistedAccessToken(TokenDTO tokenDTO) {
+    Long userId = tokenDTO.getUserId();
+    String accessToken = tokenDTO.getAccessToken();
+    String key = BLACKLIST_TOKEN_PREFIX + "access:" + userId;
+
+    try {
+      // Access Token의 남은 만료 시간 계산
+      Long remainingTime = jwtTokenUtil.getTokenExpiry(accessToken);
+      if (remainingTime > 0) {
+        redisTemplate.opsForSet().add(key, accessToken);
+        // 남은 만료 시간만큼 TTL 설정 (밀리초를 초로 변환)
+        redisTemplate.expire(key, remainingTime / 1000, TimeUnit.SECONDS);
+        return true;
+      }
+      return false;
+    } catch (Exception e) {
+      return false;
+    }
+  }
+
+  @Override
+  public boolean isBlacklistedAccessToken(String accessToken, Long userId) {
+    String key = BLACKLIST_TOKEN_PREFIX + "access:" + userId;
+    try {
+      Boolean isMember = redisTemplate.opsForSet().isMember(key, accessToken);
+      return isMember != null && isMember;
+    } catch (Exception e) {
+      return false;
+    }
+  }
+
+  @Override
   public String getUserEmailFromAuthentication(Authentication authentication){
     Object p = authentication.getPrincipal();
     String result = null;
@@ -217,7 +249,6 @@ public class AuthServiceImpl implements AuthService {
       if ("naver".equals(reg))  result =  (String) ((Map<?,?>) attrs.get("response")).get("email");
       if ("kakao".equals(reg))  result =  (String) ((Map<?,?>) attrs.get("kakao_account")).get("email");
     }
-
     return result;
   }
 }

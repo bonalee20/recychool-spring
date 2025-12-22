@@ -30,7 +30,14 @@ public interface AuthService {// 로그인 -> 성공 시 토큰(AccessToken, Ref
   // RefreshToken을 블랙리스트인지 아닌지 확인
   public boolean isBlackedRefreshToken(TokenDTO tokenDTO);
 
+  // Access Token을 블랙리스트에 추가
+  public boolean saveBlacklistedAccessToken(TokenDTO tokenDTO);
+
+  // Access Token이 블랙리스트인지 확인
+  public boolean isBlacklistedAccessToken(String accessToken, Long userId);
+
 //  토큰으로 이메일 가져오기
   public String getUserEmailFromAuthentication(Authentication authentication);
 
+//  로그인 시 기존 로그인 확인
 }

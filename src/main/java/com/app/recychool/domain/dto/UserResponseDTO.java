@@ -4,6 +4,7 @@ import com.app.recychool.domain.entity.User;
 import lombok.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -17,11 +18,12 @@ public class UserResponseDTO implements Serializable {
 
     private Long id;
     private String userName;
-    private Date userBirthday;
+    private LocalDate userBirthday;
     private String userEmail;
     private String userPhone;
     private String userPassword;
     private String userProvider;
+    private Integer userIsLogin;
 
     public UserResponseDTO(User user) {
         this.id = user.getId();
@@ -31,5 +33,6 @@ public class UserResponseDTO implements Serializable {
         this.userBirthday = user.getUserBirthday();
         this.userPhone = user.getUserPhone();
         this.userPassword = user.getUserPassword();
+        this.userIsLogin = user.getUserIsLogin();
     }
 }

@@ -134,4 +134,45 @@ public class UserServiceImpl implements UserService {
     userRepository.deleteById(id);
   }
 
+//  로그아웃 시 현재 로그인 상태 변경 서비스
+    @Override
+    public void modifyUserIsLogin(Long userId){
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new UserException("유저를 찾을 수 없습니다."));
+        user.setUserIsLogin(0);
+    }
+
+    @Override
+    public boolean findUserByUserNameAndUserPhone(String userName, String userPhone) {
+//      이름 + 전화번호로 조회된 회원이 없다 == 회원가입한 적 없음 => false 리턴
+        if(userRepository.findUserEmailByUserNameAndUserPhone(userName, userPhone).isEmpty()){
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    @Transactional // 트랜잭션 종료 시 변경 감지(Dirty Checking)가 동작합니다.
+    public void updateUserInfo(Long userId, UserUpdateDTO updateDTO) {
+
+        // 1. 엔티티 조회
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 회원을 찾을 수 없습니다."));
+
+        // 2. 값 변경 (Setter 직접 사용)
+        // [추가됨] 이름 수정 로직
+        if (updateDTO.getUserName() != null && !updateDTO.getUserName().isBlank()) {
+            user.setUserName(updateDTO.getUserName());
+        }
+        // 전화번호 수정 로직 (값이 있을 때만 set 호출)
+        if (updateDTO.getUserPhone() != null && !updateDTO.getUserPhone().isBlank()) {
+            user.setUserPhone(updateDTO.getUserPhone());
+        }
+
+        // 비밀번호 수정 로직 (값이 있을 때만 암호화 후 set 호출)
+        if (updateDTO.getUserPassword() != null && !updateDTO.getUserPassword().isBlank()) {
+            String encryptedPassword = passwordEncoder.encode(updateDTO.getUserPassword());
+            user.setUserPassword(encryptedPassword);
+        }
+    }
 }
