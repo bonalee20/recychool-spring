@@ -31,8 +31,8 @@ class SchoolRepositoryTest {
         school1.setSchoolCity("광진구");
         school1.setSchoolName("서울화양초등학교");
         school1.setSchoolAddress("서울특별시 광진구 군자로 9");
-        school1.setSchoolLand(5583);
-        school1.setSchoolArea(3787);
+        school1.setSchoolLand(5583); //대지
+        school1.setSchoolArea(3787); //연면적
         school1.setSchoolPhone("02-2286-3704");
         school1.setSchoolImagePath("C:\\school");
         school1.setSchoolImageName("광진구_서울화양초등학교.jpg");

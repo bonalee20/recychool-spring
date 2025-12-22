@@ -23,12 +23,15 @@ public class School {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_SCHOOL_GENERATOR")
     private Long id;
-    private String schoolCity;
-    private String schoolName;
-    private Integer schoolLand; //대지
-    private Integer schoolArea; //건물연면적
-    private String schoolPhone;
-    private String schoolAddress;
+    private String schoolCity; // 서울 || 경기
+    @Column(unique = true)
+    private String schoolName; //학교이름
+    private Double schoolLand; //대지
+    private Double schoolArea; // 건물연면적
+    private String schoolPhone; //담당자전화번호
+    private String schoolAddress; //학교주소
+    private Double schoolLat; // 위도
+    private Double schoolLon; // 경도
 
     private String schoolImagePath;
     private String schoolImageName;

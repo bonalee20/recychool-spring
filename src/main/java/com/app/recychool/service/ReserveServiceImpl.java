@@ -111,7 +111,7 @@ public class ReserveServiceImpl implements ReserveService {
             LocalDate date
     ) {
 
-        int maxParking = school.getSchoolLand() / PARKING_AREA_PER_CAR;
+        Double maxParking = school.getSchoolLand() / PARKING_AREA_PER_CAR;
 
         long activeCount = getCompletedParkingCount(school.getId(), date);
 

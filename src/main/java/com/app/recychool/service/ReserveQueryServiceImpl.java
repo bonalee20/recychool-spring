@@ -44,7 +44,7 @@ public class ReserveQueryServiceImpl implements ReserveQueryService {
         int deposit;
         String usageTime;
 
-        Integer maxParkingCapacity = null;
+        Double maxParkingCapacity = null;
 
         if (reserveType == ReserveType.PLACE) {
             price = 0;

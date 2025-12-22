@@ -19,7 +19,7 @@ public class SchoolReservePageResponseDTO {
     private String schoolAddress;
     private String schoolPhone;
 
-    private Integer schoolArea;
+    private Double schoolArea;
     private String schoolImageName;
     private String schoolImagePath;
 
@@ -29,7 +29,7 @@ public class SchoolReservePageResponseDTO {
     private Integer price;        // PLACE = 0, PARKING = 30000
     private Integer deposit;      // PLACE = 50000, PARKING = 0
 
-    private Integer maxParkingCapacity;   // 총 수용 가능 대수
+    private Double maxParkingCapacity;   // 총 수용 가능 대수
     private Integer currentParkingCount;  // 현재 예약된 대수
 
 
