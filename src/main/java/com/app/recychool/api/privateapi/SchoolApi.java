@@ -19,7 +19,7 @@ import java.util.List;
 @RequestMapping("/school/*")
 public class SchoolApi {
     private final SchoolService schoolService;
-    @GetMapping("get-SchoolAll")
+    @GetMapping("find-all")
     public ResponseEntity<ApiResponseDTO> getSchoolAll() {
         List<School> schoolAll = schoolService.getSchoolAll();
         return ResponseEntity.status(HttpStatus.OK).body(ApiResponseDTO.of("학교조회", schoolAll));
