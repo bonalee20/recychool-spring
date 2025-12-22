@@ -15,13 +15,4 @@ class LargeClobInsertServiceTest {
     @Autowired
     private LargeClobInsertService largeClobInsertService;
 
-    @Test
-    void runBulkLoad() {
-        List<File> files = List.of(
-                new File("src/main/resources/polygons/seoul_polygon_5179.geojson"),
-                new File("src/main/resources/polygons/gyeonggi_polygon_5179.geojson")
-        );
-        largeClobInsertService.insertFilesInBatches(files, 1);
-    }
-
 }
