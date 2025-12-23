@@ -32,6 +32,7 @@ public class School {
     private String schoolAddress; //학교주소
     private Double schoolLat; // 위도
     private Double schoolLon; // 경도
+    private Integer schoolParkCount;
 
     private String schoolImagePath;
     private String schoolImageName;

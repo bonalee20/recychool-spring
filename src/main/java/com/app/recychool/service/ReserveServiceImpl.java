@@ -90,7 +90,7 @@ public class ReserveServiceImpl implements ReserveService {
                 .reserveStatus(ReserveStatus.PENDING)
                 .startDate(date)
                 .endDate(date)
-                .reservePrice(0)
+                .reservePrice(50_000)
                 .reserveDeposit(50_000)
                 .build();
 

@@ -15,9 +15,13 @@ public class PaymentPageResponseDTO {
     private Long reserveId;
     private String reserveType;
     private String startDate;
+    private String endDate;
 
     // 결제 금액
     private Integer amount;
+
+    private Long SchoolId;
+
 
     private String userName;
     private String userEmail;

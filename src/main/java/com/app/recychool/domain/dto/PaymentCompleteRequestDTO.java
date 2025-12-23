@@ -16,5 +16,7 @@ public class PaymentCompleteRequestDTO {
     private String merchantUid;
     private PaymentType paymentType;
     private Integer amount;
+    private boolean extend;
+
 
 }

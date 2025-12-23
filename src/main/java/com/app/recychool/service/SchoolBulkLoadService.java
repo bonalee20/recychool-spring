@@ -60,6 +60,7 @@ public class SchoolBulkLoadService {
                 String areaStr = safe(cols, 7);
                 String imgPath = safe(cols, 8);
                 String imgName = safe(cols, 9);
+                String parkCountStr = safe(cols, 10);
 
                 if (name == null || name.isBlank()) {
                     skipped++;
@@ -76,6 +77,7 @@ public class SchoolBulkLoadService {
                 Double area = parseDoubleOrNull(areaStr);
                 Double lon = parseDoubleOrNull(lonStr);
                 Double lat = parseDoubleOrNull(latStr);
+                Integer park = Integer.parseInt(parkCountStr);
 
                 School s = School.builder()
                         .schoolCity(city)
@@ -88,6 +90,7 @@ public class SchoolBulkLoadService {
                         .schoolLat(lat)
                         .schoolImagePath(imgPath)
                         .schoolImageName(imgName)
+                        .schoolParkCount(park)
                         .build();
 
                 buffer.add(s);
