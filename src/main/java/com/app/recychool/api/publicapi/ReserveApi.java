@@ -57,13 +57,13 @@ public class ReserveApi {
     // 주차 날짜별 예약 수
 
     @GetMapping("/{schoolId}/parking/counts")
-    public ResponseEntity<ApiResponseDTO<Map<LocalDate, Integer>>> getParkingCounts(
+    public ResponseEntity<ApiResponseDTO<Map<String, Integer>>> getParkingCounts(
             @PathVariable Long schoolId
     ) {
         LocalDate today = LocalDate.now();
         LocalDate end = today.plusMonths(1);
 
-        Map<LocalDate, Integer> result =
+        Map<String, Integer> result =
                 reserveQueryService.getParkingCountMap(schoolId, today, end);
 
         return ResponseEntity.status(HttpStatus.OK)

@@ -14,7 +14,7 @@ public interface ReserveQueryService {
             ReserveType reserveType
     );
 
-    Map<LocalDate, Integer> getParkingCountMap(
+    Map<String, Integer> getParkingCountMap(
             Long schoolId,
             LocalDate from,
             LocalDate to
