@@ -58,6 +58,8 @@ public class SchoolBulkLoadService {
                 String lonStr = safe(cols, 5); // _X
                 String latStr = safe(cols, 6); // _Y
                 String areaStr = safe(cols, 7);
+                String imgPath = safe(cols, 8);
+                String imgName = safe(cols, 9);
 
                 if (name == null || name.isBlank()) {
                     skipped++;
@@ -84,6 +86,8 @@ public class SchoolBulkLoadService {
                         .schoolAddress(address)
                         .schoolLon(lon)
                         .schoolLat(lat)
+                        .schoolImagePath(imgPath)
+                        .schoolImageName(imgName)
                         .build();
 
                 buffer.add(s);
