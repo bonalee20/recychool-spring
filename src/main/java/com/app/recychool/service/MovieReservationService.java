@@ -9,10 +9,6 @@ import java.util.Map;
 public interface MovieReservationService {
     // 저장 (예약하기) - 리턴 타입 변경
     public Map<String, Long> save(MovieReservation movieReservation);
-    
-    // ID로 간단하게 예약
-    public Map<String, Long> saveByIds(Long schoolId, String movieTitle, Long userId);
- 
     // 삭제 (예약 취소)
     public void delete(Long id);
 
@@ -21,7 +17,8 @@ public interface MovieReservationService {
 
     public List<School> getMovieSchools();
 
-
+    public Map<String, Long> saveByIds(Long schoolId, String movieTitle, Long userId);
+    
     // 마이 예약 확인
     public List<MovieReservation> getMyReservations(Long userId);
 }

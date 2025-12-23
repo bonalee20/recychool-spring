@@ -17,10 +17,12 @@ public interface MovieReservationRepository extends JpaRepository<MovieReservati
             "order by mr.movieReservationDate desc")
     public List<MovieReservation> findMyMovieReservation(Long userId);
 
-    // 잔여 좌석 확인용
     public long countBySchoolId(Long schoolId);
 
+    boolean existsByUserIdAndMovieId(Long userId, Long movieId);
 
+
+    // 더미
     @Query("select distinct mr.school from MovieReservation mr where mr.user is null")
     public List<School> findMovieSchoolNames();
 }

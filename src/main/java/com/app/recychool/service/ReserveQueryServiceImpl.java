@@ -55,7 +55,7 @@ public class ReserveQueryServiceImpl implements ReserveQueryService {
             deposit = 0;
             usageTime = "18:00 ~ 08:00";
 
-            // ✔ 주차 최대 수용 인원 (면적 / 25, 소수점 버림)
+            // ✔ 주차 최대 수용 인원 (면적 / 100, 소수점 버림)
             maxParkingCapacity = school.getSchoolArea() / PARKING_AREA_PER_CAR;
         }
 
@@ -102,12 +102,13 @@ public class ReserveQueryServiceImpl implements ReserveQueryService {
         return List.of();
     }
 
-    public Map<LocalDate, Integer> getParkingCountMap(
+    @Override
+    public Map<String, Integer> getParkingCountMap(
             Long schoolId,
             LocalDate from,
             LocalDate to
     ) {
-        Map<LocalDate, Integer> result = new HashMap<>();
+        Map<String, Integer> result = new HashMap<>();
 
         LocalDate date = from;
         while (!date.isAfter(to)) {
@@ -117,7 +118,7 @@ public class ReserveQueryServiceImpl implements ReserveQueryService {
                     ReserveStatus.COMPLETED,
                     date
             );
-            result.put(date, (int) count);
+            result.put(date.toString(), (int) count);
             date = date.plusDays(1);
         }
 

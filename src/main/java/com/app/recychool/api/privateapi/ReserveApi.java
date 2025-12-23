@@ -12,7 +12,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+
+import java.nio.file.attribute.UserPrincipal;
 
 @RestController("privateReserveApi")
 @RequestMapping("/private/schools")
@@ -81,5 +84,18 @@ public class ReserveApi {
 
         return userService.getUserIdByUserEmail(userEmail);
     }
+
+    // 예약 취소
+    @DeleteMapping("/reserves/{reserveId}")
+    public ResponseEntity<ApiResponseDTO<Void>> cancelReserve(
+            @PathVariable Long reserveId,
+            Authentication authentication
+    ) {
+        Long userId = getUserId(authentication);
+
+        reserveService.cancelReserve(reserveId, userId);
+        return ResponseEntity.ok(ApiResponseDTO.of("예약 취소 완료"));
+    }
+
 }
 

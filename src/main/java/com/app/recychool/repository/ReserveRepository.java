@@ -1,6 +1,7 @@
 package com.app.recychool.repository;
 
 import com.app.recychool.domain.entity.Reserve;
+import com.app.recychool.domain.entity.School;
 import com.app.recychool.domain.enums.ReserveStatus;
 import com.app.recychool.domain.enums.ReserveType;
 import org.apache.ibatis.annotations.Param;
@@ -78,7 +79,7 @@ public interface ReserveRepository extends JpaRepository<Reserve, Long> {
       AND r.reserveStatus = :status
       AND :date BETWEEN r.startDate AND r.endDate
     """)
-    long countActiveParking(
+    public long countActiveParking(
             @Param("schoolId") Long schoolId,
             @Param("type") ReserveType type,
             @Param("status") ReserveStatus status,
@@ -95,7 +96,7 @@ public interface ReserveRepository extends JpaRepository<Reserve, Long> {
       AND r.startDate = :date
     ORDER BY r.waitingOrder ASC
     """)
-    List<Reserve> findWaitingQueue(
+    public List<Reserve> findWaitingQueue(
             @Param("schoolId") Long schoolId,
             @Param("reserveType") ReserveType reserveType,
             @Param("reserveStatus") ReserveStatus reserveStatus,
@@ -104,19 +105,24 @@ public interface ReserveRepository extends JpaRepository<Reserve, Long> {
 
     // 특정 waitingOrder 뒤에 있는 대기자들
     @Query("""
-    SELECT r
-    FROM Reserve r
-    WHERE r.school.id = :schoolId
-      AND r.reserveType = :ReserveType
-      AND r.reserveStatus = :ReserveStatus
-      AND r.startDate = :date
-      AND r.waitingOrder > :order
-    ORDER BY r.waitingOrder ASC
+        SELECT r
+        FROM Reserve r
+        WHERE r.school.id = :schoolId
+          AND r.reserveType = :reserveType
+          AND r.reserveStatus = :reserveStatus
+          AND r.startDate = :date
+          AND r.waitingOrder > :order
+        ORDER BY r.waitingOrder ASC
     """)
-    List<Reserve> findWaitingAfterOrder(
+
+    public List<Reserve> findWaitingAfterOrder(
             @Param("schoolId") Long schoolId,
+            @Param("reserveType") ReserveType reserveType,
+            @Param("reserveStatus") ReserveStatus reserveStatus,
             @Param("date") LocalDate date,
             @Param("order") Integer order
     );
+
+
 
 }

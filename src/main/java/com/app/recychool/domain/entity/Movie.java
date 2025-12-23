@@ -3,7 +3,7 @@ package com.app.recychool.domain.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -26,6 +26,7 @@ public class Movie {
     private String movieTitle;
     private String movieTime;
     private Integer moviePeopleAll;
+    private LocalDateTime movieStartDate; // 상영 날짜
 
     @OneToMany(mappedBy = "movie")
     @JsonIgnore
