@@ -18,4 +18,10 @@ public class SchoolServiceImpl implements SchoolService {
     public List<School> getSchoolAll() {
         return schoolRepository.findAll();
     }
+
+    @Override
+    public List<School> getSchoolsWithoutPlaceReservation() { return schoolRepository.findSchoolsWithoutPlaceReservation();}
+
+    @Override
+    public List<School> getFourRandomSchool() { return schoolRepository.findFourRandomSchool();}
 }

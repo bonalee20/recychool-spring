@@ -15,4 +15,11 @@ public interface SchoolRepository extends JpaRepository<School, Long> {
 
     @Query(value = "SELECT t FROM ( SELECT s FROM TBL_School s WHERE s.schoolParkCount > 0 order by dbms_random.value ) t WHERE ROWNUM <= 4", nativeQuery = true)
     List<School> findRandomSchoolWithParkLimit();
+
+    @Query(value = "SELECT * FROM ( SELECT s.* FROM TBL_SCHOOL s WHERE NOT EXISTS( SELECT 1 FROM TBL_RESERVE r WHERE r.SCHOOL_ID = s.ID AND r.RESERVE_TYPE = 'PLACE' ) ORDER BY DBMS_RANDOM.VALUE(1, 4) ) WHERE ROWNUM <= 4",  nativeQuery = true)
+    List<School> findSchoolsWithoutPlaceReservation();
+
+    @Query(value = "SELECT * FROM ( SELECT s.* FROM TBL_SCHOOL s ORDER BY DBMS_RANDOM.VALUE(1, 4) ) WHERE ROWNUM <= 4", nativeQuery = true)
+    List<School> findFourRandomSchool();
+
 }

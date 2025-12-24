@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface SchoolService {
     public List<School> getSchoolAll();
+    public List<School> getSchoolsWithoutPlaceReservation();
+    public List<School> getFourRandomSchool();
 }

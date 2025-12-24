@@ -1,7 +1,9 @@
 package com.app.recychool.api.privateapi;
 
 import com.app.recychool.domain.dto.ApiResponseDTO;
+import com.app.recychool.domain.entity.Reserve;
 import com.app.recychool.domain.entity.School;
+import com.app.recychool.repository.ReserveRepository;
 import com.app.recychool.service.SchoolService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -43,5 +45,16 @@ public class SchoolApi {
         return ResponseEntity.status(HttpStatus.OK).body(ApiResponseDTO.of("학교 주차공간 조회", lists));
     }
 
+    @GetMapping("find-not-exist-school")
+    public ResponseEntity<ApiResponseDTO> getNotExistSchool() {
+        List<School> findPlaceReservationNotExistSchool = schoolService.getSchoolsWithoutPlaceReservation();
+        return ResponseEntity.status(HttpStatus.OK).body(ApiResponseDTO.of("장소예약 가능한 학교들 조회", findPlaceReservationNotExistSchool));
+    }
+
+    @GetMapping("find-four-random")
+    public ResponseEntity<ApiResponseDTO> getFourRandomSchool() {
+        List<School> schools = schoolService.getFourRandomSchool();
+        return ResponseEntity.status(HttpStatus.OK).body(ApiResponseDTO.of("무료 영화 예약 가능한 학교들 조회", schools));
+    }
 
 }
