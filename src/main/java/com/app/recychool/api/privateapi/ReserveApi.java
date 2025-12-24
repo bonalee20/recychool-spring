@@ -97,5 +97,35 @@ public class ReserveApi {
         return ResponseEntity.ok(ApiResponseDTO.of("예약 취소 완료"));
     }
 
+    // 내 장소 예약 ID 목록 (최대 2개)
+    @GetMapping("/place/reserves")
+    public ResponseEntity<ApiResponseDTO<?>> getMyPlaceReserves(
+            Authentication authentication
+    ) {
+        Long userId = getUserId(authentication);
+
+        return ResponseEntity.ok(
+                ApiResponseDTO.of(
+                        "내 장소 예약 조회 성공",
+                        reserveService.getMyPlaceReserves(userId)
+                )
+        );
+    }
+
+    // 내 주차 예약 ID (1개)
+    @GetMapping("/parking/reserves")
+    public ResponseEntity<ApiResponseDTO<?>> getMyParkingReserve(
+            Authentication authentication
+    ) {
+        Long userId = getUserId(authentication);
+
+        Long reserveId = reserveService.getMyParkingReserve(userId);
+
+        return ResponseEntity.ok(
+                ApiResponseDTO.of("내 주차 예약 조회 성공", reserveId)
+        );
+    }
+
+
 }
 

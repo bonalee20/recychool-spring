@@ -131,4 +131,11 @@ public interface ReserveRepository extends JpaRepository<Reserve, Long> {
     """)
     public  List<Reserve> findCompletedAndExpired(@Param("today") LocalDate today);
 
+
+    // 추가해야 하는 메서드
+    List<Reserve> findByUserIdAndReserveTypeAndReserveStatus(
+            Long userId,
+            ReserveType reserveType,
+            ReserveStatus reserveStatus
+    );
 }
