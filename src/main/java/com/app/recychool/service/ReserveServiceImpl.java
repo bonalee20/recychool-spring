@@ -16,7 +16,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -275,6 +277,41 @@ public class ReserveServiceImpl implements ReserveService {
                 .orElseThrow();
 
         reserve.cancel();
+    }
+
+    @Override
+    public List<Map<String, String>> getMyPlaceReserves(Long userId) {
+        return reserveRepository
+                .findByUserIdAndReserveTypeAndReserveStatus(
+                        userId,
+                        ReserveType.PLACE,
+                        ReserveStatus.COMPLETED
+                )
+                .stream()
+                .limit(2)
+                .map(r -> {
+                    Map<String, String> map = new HashMap<>();
+                    map.put("reserveId", r.getId().toString());
+                    map.put("schoolId", r.getSchool().getId().toString());
+                    map.put("schoolImageName", r.getSchool().getSchoolImageName());
+                    return map;
+                })
+                .toList();
+    }
+
+
+    @Override
+    public Long getMyParkingReserve(Long userId) {
+        return reserveRepository
+                .findByUserIdAndReserveTypeAndReserveStatus(
+                        userId,
+                        ReserveType.PARKING,
+                        ReserveStatus.COMPLETED
+                )
+                .stream()
+                .findFirst()
+                .map(Reserve::getId)
+                .orElse(null);
     }
 
 }
