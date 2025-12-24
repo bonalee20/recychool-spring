@@ -18,5 +18,9 @@ public class PaymentCompleteRequestDTO {
     private Integer amount;
     private boolean extend;
 
+    private String paymentId; // PortOne paymentId
+    private String txId;      // PortOne txId
+
+
 
 }
