@@ -34,6 +34,7 @@ public class School {
     private Double schoolLon; // 경도
     private Integer schoolParkCount;
 
+
     private String schoolImagePath;
     private String schoolImageName;
 
