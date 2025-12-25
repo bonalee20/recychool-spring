@@ -50,8 +50,7 @@ class SchoolRepositoryTest {
 //        school1.setSchoolCity("광진구");
 //        school1.setSchoolName("서울화양초등학교");
 //        school1.setSchoolAddress("서울특별시 광진구 군자로 9");
-//        school1.setSchoolLand(5583); //대지
-//        school1.setSchoolArea(3787); //연면적
+//
 //        school1.setSchoolPhone("02-2286-3704");
 //        school1.setSchoolImagePath("C:\\school");
 //        school1.setSchoolImageName("광진구_서울화양초등학교.jpg");
@@ -61,8 +60,7 @@ class SchoolRepositoryTest {
 //        school2.setSchoolCity("성동구");
 //        school2.setSchoolName("덕수고등학교(행당분교)");
 //        school2.setSchoolAddress("서울특별시 성동구 왕십리로 199");
-//        school2.setSchoolLand(35128);
-//        school2.setSchoolArea(20777);
+//
 //        school2.setSchoolPhone("02-2286-3704");
 //        school2.setSchoolImagePath("C:\\school");
 //        school2.setSchoolImageName("성동구_덕수고등학교(행당분교).jpg");
@@ -72,8 +70,7 @@ class SchoolRepositoryTest {
 //        school3.setSchoolCity("성동구");
 //        school3.setSchoolName("성수공업고등학교");
 //        school3.setSchoolAddress("서울특별시 성동구 뚝섬로 365");
-//        school3.setSchoolLand(13800);
-//        school3.setSchoolArea(17427);
+//;
 //        school3.setSchoolPhone("02-2286-3704");
 //        school3.setSchoolImagePath("C:\\school");
 //        school3.setSchoolImageName("성동구_성수공업고등학교.jpg");
@@ -83,8 +80,7 @@ class SchoolRepositoryTest {
 //        school4.setSchoolCity("금천구");
 //        school4.setSchoolName("서울흥일초등학교");
 //        school4.setSchoolAddress("서울특별시 영등포구 문래로 121");
-//        school4.setSchoolLand(4866);
-//        school4.setSchoolArea(4094);
+//
 //        school4.setSchoolPhone("02-2165-2122");
 //        school4.setSchoolImagePath("C:\\school");
 //        school4.setSchoolImageName("금천구_서울흥일초등학교.jpg");
@@ -94,8 +90,7 @@ class SchoolRepositoryTest {
 //        school5.setSchoolCity("강서구");
 //        school5.setSchoolName("서울염강초등학교");
 //        school5.setSchoolAddress("서울특별시 강서구 허준로 221-22");
-//        school5.setSchoolLand(11076);
-//        school5.setSchoolArea(5162);
+//
 //        school5.setSchoolPhone("02-2600-0922");
 //        school5.setSchoolImagePath("C:\\school");
 //        school5.setSchoolImageName("강서구_서울염강초등학교.jpg");
@@ -105,8 +100,7 @@ class SchoolRepositoryTest {
 //        school6.setSchoolCity("강서구");
 //        school6.setSchoolName("공진중학교");
 //        school6.setSchoolAddress("서울특별시 강서구 양천로55길 56");
-//        school6.setSchoolLand(7052);
-//        school6.setSchoolArea(6792);
+//
 //        school6.setSchoolPhone("02-2600-0922");
 //        school6.setSchoolImagePath("C:\\school");
 //        school6.setSchoolImageName("강서구_공진중학교.jpg");
@@ -116,8 +110,7 @@ class SchoolRepositoryTest {
 //        school7.setSchoolCity("성남시");
 //        school7.setSchoolName("구.영성여중");
 //        school7.setSchoolAddress("");
-//        school7.setSchoolLand(14195);
-//        school7.setSchoolArea(7411);
+//
 //        school7.setSchoolPhone("031-780-2618");
 //        school7.setSchoolImagePath("C:\\school");
 //        school7.setSchoolImageName("성남시_구.영성여중.jpg");
@@ -127,8 +120,7 @@ class SchoolRepositoryTest {
 //        school8.setSchoolCity("부천시");
 //        school8.setSchoolName("부천덕산초대장분교장");
 //        school8.setSchoolAddress("경기도 부천시 대장로92");
-//        school8.setSchoolLand(9576);
-//        school8.setSchoolArea(1357);
+//
 //        school8.setSchoolPhone("032-620-0282");
 //        school8.setSchoolImagePath("C:\\school");
 //        school8.setSchoolImageName("부천시_부천덕산초대장분교장.jpeg");
@@ -138,8 +130,7 @@ class SchoolRepositoryTest {
 //        school9.setSchoolCity("부천시");
 //        school9.setSchoolName("구.복사초");
 //        school9.setSchoolAddress("경기도 부천시 소사구 소사로 96");
-//        school9.setSchoolLand(11328);
-//        school9.setSchoolArea(4877);
+//
 //        school9.setSchoolPhone("032-620-0282");
 //        school9.setSchoolImagePath("C:\\school");
 //        school9.setSchoolImageName("부천시_구.복사초.jpg");
@@ -149,8 +140,7 @@ class SchoolRepositoryTest {
 //        school10.setSchoolCity("안산시");
 //        school10.setSchoolName("구.화정초");
 //        school10.setSchoolAddress("경기도 안산시 단원구 꽃우물길97");
-//        school10.setSchoolLand(5818);
-//        school10.setSchoolArea(665);
+//
 //        school10.setSchoolPhone("031-412-4653");
 //        school10.setSchoolImagePath("C:\\school");
 //        school10.setSchoolImageName("안산시_구.화정초.jpg");
@@ -160,8 +150,7 @@ class SchoolRepositoryTest {
 //        school11.setSchoolCity("안산시");
 //        school11.setSchoolName("대동초선감분교장");
 //        school11.setSchoolAddress("경기도 안산시 단원구 대부황금로603");
-//        school11.setSchoolLand(8855);
-//        school11.setSchoolArea(929);
+//
 //        school11.setSchoolPhone("031-412-4653");
 //        school11.setSchoolImagePath("C:\\school");
 //        school11.setSchoolImageName("안산시_대동초선감분교장.jpg");
@@ -171,8 +160,7 @@ class SchoolRepositoryTest {
 //        school12.setSchoolCity("평택시");
 //        school12.setSchoolName("서탄초금각분교장");
 //        school12.setSchoolAddress("경기도 평택시 서탄면 용소금각로438-14");
-//        school12.setSchoolLand(11343);
-//        school12.setSchoolArea(914);
+//
 //        school12.setSchoolPhone("031-650-1274");
 //        school12.setSchoolImagePath("C:\\school");
 //        school12.setSchoolImageName("평택시_서탄초금각분교장.jpg");
@@ -182,8 +170,7 @@ class SchoolRepositoryTest {
 //        school13.setSchoolCity("평택시");
 //        school13.setSchoolName("내기초 신영분교장");
 //        school13.setSchoolAddress("경기도 평택시 포승읍 신영새싹길 86-29");
-//        school13.setSchoolLand(12795);
-//        school13.setSchoolArea(1018);
+//
 //        school13.setSchoolPhone("031-650-1274");
 //        school13.setSchoolImagePath("C:\\school");
 //        school13.setSchoolImageName("평택시_내기초 신영분교장.jpg");
